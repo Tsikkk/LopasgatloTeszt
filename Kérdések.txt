@@ -1,0 +1,77 @@
+Melyik az alapvető osztály a C# programozási nyelvben?
+a) Base
+b) Main
+c) Object
+Válasz: c) Object
+
+Mi a C# nyelv egyik fő jellemzője?
+a) Dinamikus típusú nyelv
+b) Szigorúan típusbiztos nyelv
+c) Logikai nyelv
+Válasz: b) Szigorúan típusbiztos nyelv
+
+Milyen kulcsszót használunk a C# osztályok öröklődésének deklarálásához?
+a) extend
+b) inherits
+c) extends
+Válasz: b) inherits
+
+Milyen kulcsszót használunk a C# osztályok absztrakt osztályként való deklarálásához?
+a) abstract
+b) final
+c) sealed
+Válasz: a) abstract
+
+Melyik kulcsszót használjuk a C#-ban egy osztály metódusainak és tulajdonságainak elrejtésére?
+a) override
+b) private
+c) hide
+Válasz: b) private
+
+Melyik az a függvény, ami automatikusan meghívódik egy osztály példányosításakor?
+a) construct()
+b) init()
+c) constructor()
+Válasz: c) constructor()
+
+Milyen módosítóval rendelkező tagváltozókra nincs közvetlen hozzáférés a leszármazott osztályokból C#-ban?
+a) protected
+b) private
+c) public
+Válasz: b) private
+
+Melyik kulcsszót használjuk a C#-ban az interfész definíciójának megadásához?
+a) interface
+b) implements
+c) extends
+Válasz: a) interface
+
+Mi az az öröklődési mód, amikor egy osztály több interfészt is implementál?
+a) Multi-level inheritance
+b) Multiple inheritance
+c) Hierarchical inheritance
+Válasz: b) Multiple inheritance
+
+Melyik az az attribútum, amely lehetővé teszi az osztály és interfész metadatának kezelését a C# nyelvben?
+a) [metadata]
+b) [attribute]
+c) [annotation]
+Válasz: b) [attribute]
+
+Melyik módosítóval rendelkező tagváltozókhoz lehet hozzáférni az adott osztályon kívülről is a C# nyelvben?
+a) private
+b) public
+c) protected
+Válasz: b) public
+
+Melyik kulcsszóval tudunk hivatkozni az aktuális osztály egy másik konstruktorára C#-ban?
+a) this
+b) super
+c) self
+Válasz: a) this
+
+Melyik módosítóval rendelkező tagváltozókhoz lehet hozzáférni csak az adott osztályon belül a C# nyelvben?
+a) private
+b) protected
+c) public
+Válasz: a) private
