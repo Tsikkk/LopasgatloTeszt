@@ -12,6 +12,8 @@ namespace Quiz
 {
     public partial class Form1 : Form
     {
+        bool addPoint=false;
+        
         private string[] questions = {
             "Melyik az alapvető osztály a C# programozási nyelvben?",
             "Mi a C# nyelv egyik fő jellemzője?",
@@ -65,6 +67,7 @@ namespace Quiz
             valasz3.Text = answers[index][2];
             valasz1.ForeColor = valasz2.ForeColor = valasz3.ForeColor = Color.Black; // Reset colors
             valasz1C.Checked = valasz2C.Checked = valasz3C.Checked = false; // Reset checkboxes
+            pont.Text = "Pontok: " + point;
         }
 
 
@@ -72,6 +75,7 @@ namespace Quiz
 
         private void next_Click_1(object sender, EventArgs e)
         {
+            check();
             currentQuestionIndex++;
             if (currentQuestionIndex < questions.Length)
             {
@@ -84,9 +88,9 @@ namespace Quiz
                 currentQuestionIndex = 0;
                 LoadQuestion(currentQuestionIndex);
             }
+            addPoint = false;
         }
-
-        private void ckeckAnsw_Click(object sender, EventArgs e)
+        private void check()
         {
             char userAnswer = ' ';
             if (valasz1C.Checked)
@@ -126,6 +130,19 @@ namespace Quiz
                         valasz3.ForeColor = Color.Red;
                     break;
             }
+            if (userAnswer== correctAnswers[currentQuestionIndex] && addPoint==false)
+            {
+                point++;
+            }
+            pont.Text = "Pontok: " + point;
+
+        }
+        
+
+        private void ckeckAnsw_Click(object sender, EventArgs e)
+        {
+            check();
+            addPoint = true;
         }
 
         

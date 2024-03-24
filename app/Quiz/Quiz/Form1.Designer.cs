@@ -37,6 +37,7 @@
             this.valasz1C = new System.Windows.Forms.RadioButton();
             this.valasz2C = new System.Windows.Forms.RadioButton();
             this.valasz3C = new System.Windows.Forms.RadioButton();
+            this.pont = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // kerdes
@@ -125,11 +126,22 @@
             this.valasz3C.TabStop = true;
             this.valasz3C.UseVisualStyleBackColor = true;
             // 
+            // pont
+            // 
+            this.pont.AutoSize = true;
+            this.pont.Location = new System.Drawing.Point(716, 9);
+            this.pont.Name = "pont";
+            this.pont.Size = new System.Drawing.Size(37, 16);
+            this.pont.TabIndex = 14;
+            this.pont.Text = "Pont:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pont);
             this.Controls.Add(this.valasz3C);
             this.Controls.Add(this.valasz2C);
             this.Controls.Add(this.valasz1C);
@@ -157,6 +169,7 @@
         private System.Windows.Forms.RadioButton valasz1C;
         private System.Windows.Forms.RadioButton valasz2C;
         private System.Windows.Forms.RadioButton valasz3C;
+        private System.Windows.Forms.Label pont;
     }
 }
 
