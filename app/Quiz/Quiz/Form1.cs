@@ -13,19 +13,20 @@ namespace Quiz
     public partial class Form1 : Form
     {
         private string[] questions = {
-            "Melyik az alapvető osztály a C# programozási nyelvben?",
-            "Mi a C# nyelv egyik fő jellemzője?",
-            "Milyen kulcsszót használunk a C# osztályok öröklődésének deklarálásához?",
-            "Milyen kulcsszót használunk a C# osztályok absztrakt osztályként való deklarálásához?",
-            "Melyik kulcsszót használjuk a C#-ban egy osztály metódusainak és tulajdonságainak elrejtésére?",
-            "Melyik az a függvény, ami automatikusan meghívódik egy osztály példányosításakor?",
-            "Milyen módosítóval rendelkező tagváltozókra nincs közvetlen hozzáférés a leszármazott osztályokból C#-ban?",
-            "Melyik kulcsszót használjuk a C#-ban az interfész definíciójának megadásához?",
-            "Mi az az öröklődési mód, amikor egy osztály több interfészt is implementál?",
-            "Melyik az az attribútum, amely lehetővé teszi az osztály és interfész metadatának kezelését a C# nyelvben?",
-            "Melyik módosítóval rendelkező tagváltozókhoz lehet hozzáférni az adott osztályon kívülről is a C# nyelvben?",
-            "Melyik kulcsszóval tudunk hivatkozni az aktuális osztály egy másik konstruktorára C#-ban?",
-            "Melyik módosítóval rendelkező tagváltozókhoz lehet hozzáférni csak az adott osztályon belül a C# nyelvben?"
+            "1.) Melyik az alapvető osztály a C# programozási nyelvben?",
+            "2.) Mi a C# nyelv egyik fő jellemzője?",
+            "3.) Milyen kulcsszót használunk a C# osztályok öröklődésének deklarálásához?",
+            "4.) Milyen kulcsszót használunk a C# osztályok absztrakt osztályként való deklarálásához?",
+            "5.) Melyik kulcsszót használjuk a C#-ban egy osztály metódusainak és tulajdonságainak elrejtésére?",
+            "6.) Melyik az a függvény, ami automatikusan meghívódik egy osztály példányosításakor?",
+            "7.) Milyen módosítóval rendelkező tagváltozókra nincs közvetlen hozzáférés a leszármazott osztályokból C#-ban?",
+            "8.) Melyik kulcsszót használjuk a C#-ban az interfész definíciójának megadásához?",
+            "9.) Mi az az öröklődési mód, amikor egy osztály több interfészt is implementál?",
+            "10.) Melyik az az attribútum, amely lehetővé teszi az osztály és interfész metadatának kezelését a C# nyelvben?",
+            "11.) Melyik módosítóval rendelkező tagváltozókhoz lehet hozzáférni az adott osztályon kívülről is a C# nyelvben?",
+            "12.) Melyik kulcsszóval tudunk hivatkozni az aktuális osztály egy másik konstruktorára C#-ban?",
+            "13.) Melyik módosítóval rendelkező tagváltozókhoz lehet hozzáférni csak az adott osztályon belül a C# nyelvben?",
+            "13+1.) Az alábbiak közül melyik C# objektumok ?"
         };
 
         private string[][] answers = {
@@ -41,11 +42,12 @@ namespace Quiz
             new string[]{"a) [metadata]", "b) [attribute]", "c) [annotation]"},
             new string[]{"a) private", "b) public", "c) protected"},
             new string[]{"a) this", "b) super", "c) self"},
-            new string[]{"a) private", "b) protected", "c) public"}
+            new string[]{"a) private", "b) protected", "c) public"},
+            new string[]{ "a) A List<T> osztály példányai.", "b) A Dictionary<TKey, TValue> osztály példányai.", "c)     A StringBuilder osztály példányai."}
         };
 
         private char[] correctAnswers = {
-            'c', 'b', 'b', 'a', 'b', 'c', 'b', 'a', 'b', 'b', 'b', 'a', 'a'
+            'c', 'b', 'b', 'a', 'b', 'c', 'b', 'a', 'b', 'b', 'b', 'a', 'a','a'
         };
         private int point = 0;
 
@@ -79,10 +81,32 @@ namespace Quiz
             }
             else
             {
-                MessageBox.Show("Quiz Finished!");
-                // Optionally, you can reset the quiz here.
-                currentQuestionIndex = 0;
-                LoadQuestion(currentQuestionIndex);
+                int totalQuestions = questions.Length;
+                float percentage = (float)point / totalQuestions * 100;
+                MessageBox.Show("Quiz Finished!\nYour Score: " + percentage.ToString("0.00") + "%");
+
+                // Check if the score is less than 60%
+                if (percentage < 60)
+                {
+                    DialogResult result = MessageBox.Show("Your score is less than 60%. Do you want to restart the quiz?", "Restart Quiz", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        // Restart the quiz
+                        point = 0;
+                        currentQuestionIndex = 0;
+                        LoadQuestion(currentQuestionIndex);
+                    }
+                    else
+                    {
+                        // Close the window
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    // Close the window
+                    this.Close();
+                }
             }
         }
 
