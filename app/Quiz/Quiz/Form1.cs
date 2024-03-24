@@ -12,6 +12,8 @@ namespace Quiz
 {
     public partial class Form1 : Form
     {
+        bool addPoint=false;
+        
         private string[] questions = {
             "1.) Melyik az alapvető osztály a C# programozási nyelvben?",
             "2.) Mi a C# nyelv egyik fő jellemzője?",
@@ -43,11 +45,11 @@ namespace Quiz
             new string[]{"a) private", "b) public", "c) protected"},
             new string[]{"a) this", "b) super", "c) self"},
             new string[]{"a) private", "b) protected", "c) public"},
-            new string[]{ "a) A List<T> osztály példányai.", "b) A Dictionary<TKey, TValue> osztály példányai.", "c)     A StringBuilder osztály példányai."}
+            new string[]{ "a) A StringBuilder osztály példányai.", "b) A Dictionary<TKey, TValue> osztály példányai.", "c) A List<T> osztály példányai."}
         };
 
         private char[] correctAnswers = {
-            'c', 'b', 'b', 'a', 'b', 'c', 'b', 'a', 'b', 'b', 'b', 'a', 'a','a'
+            'c', 'b', 'b', 'a', 'b', 'c', 'b', 'a', 'b', 'b', 'b', 'a', 'a','c'
         };
         private int point = 0;
 
@@ -67,6 +69,7 @@ namespace Quiz
             valasz3.Text = answers[index][2];
             valasz1.ForeColor = valasz2.ForeColor = valasz3.ForeColor = Color.Black; // Reset colors
             valasz1C.Checked = valasz2C.Checked = valasz3C.Checked = false; // Reset checkboxes
+            pont.Text = "Pontok: " + point;
         }
 
 
@@ -74,6 +77,7 @@ namespace Quiz
 
         private void next_Click_1(object sender, EventArgs e)
         {
+            check();
             currentQuestionIndex++;
             if (currentQuestionIndex < questions.Length)
             {
@@ -82,13 +86,13 @@ namespace Quiz
             else
             {
                 int totalQuestions = questions.Length;
-                float percentage = (float)point / totalQuestions * 100;
-                MessageBox.Show("Quiz Finished!\nYour Score: " + percentage.ToString("0.00") + "%");
+                float percentage = (float)point / (totalQuestions-1) * 100;
+                MessageBox.Show("Quiz Vége!\nSzázalék: " + percentage.ToString("0.00") + "%");
 
                 // Check if the score is less than 60%
                 if (percentage < 60)
                 {
-                    DialogResult result = MessageBox.Show("Your score is less than 60%. Do you want to restart the quiz?", "Restart Quiz", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("Kevesebb mint 60% ért el. Újra akarja kezdeni a quizt?", "Újrakezdés", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
                         // Restart the quiz
@@ -108,9 +112,9 @@ namespace Quiz
                     this.Close();
                 }
             }
+            addPoint = false;
         }
-
-        private void ckeckAnsw_Click(object sender, EventArgs e)
+        private void check()
         {
             char userAnswer = ' ';
             if (valasz1C.Checked)
@@ -150,6 +154,19 @@ namespace Quiz
                         valasz3.ForeColor = Color.Red;
                     break;
             }
+            if (userAnswer== correctAnswers[currentQuestionIndex] && addPoint==false)
+            {
+                point++;
+            }
+            pont.Text = "Pontok: " + point;
+
+        }
+        
+
+        private void ckeckAnsw_Click(object sender, EventArgs e)
+        {
+            check();
+            addPoint = true;
         }
 
         
